@@ -33,6 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
     imageTakenFromMobile = File(filePath);
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,7 +119,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   onTap: (){
                     dynamic response;
                     response = sendData(filePath);
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>Detection(infectedImageFile: filePath, nameOfDisease: nameOfDisease[counter%len])));
+                    var path = filePath;
+                    setState(() {
+                      filePath = "";
+                    });
+                    Navigator.push(context, MaterialPageRoute(builder: (_)=>Detection(infectedImageFile: path, nameOfDisease: nameOfDisease[counter%len])));
                     counter++;
                   },
                 ),

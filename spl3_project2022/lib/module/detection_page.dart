@@ -20,6 +20,7 @@ class _DetectionState extends State<Detection> {
   String nameOfDisease='';
   String filePath ='';
   late File infectedImageFile;
+  late int counter = 0;
 
   @override
   void initState() {
@@ -64,18 +65,18 @@ class _DetectionState extends State<Detection> {
                   ),
                 ),
                 filePath.isEmpty? Container(): SizedBox(height: 40,),
-                filePath.isEmpty? Container():GestureDetector(
-                  child: Container(
-                    color: Color(0xff4dbac1),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text('আগের পেজে ফিরে যান', style: TextStyle(color: Colors.white, fontSize: 20)),
-                    ),
-                  ),
-                  onTap: (){
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>MyHomePage()));
-                  },
-                )
+                // filePath.isEmpty? Container():GestureDetector(
+                //   child: Container(
+                //     color: Color(0xff4dbac1),
+                //     child: Padding(
+                //       padding: const EdgeInsets.all(8.0),
+                //       child: Text('আগের পেজে ফিরে যান', style: TextStyle(color: Colors.white, fontSize: 20)),
+                //     ),
+                //   ),
+                //   onTap: (){
+                //     Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>MyHomePage()));
+                //   },
+                // )
               ],
             ),
           ),

@@ -21,7 +21,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int counter = 0;
   late File imageTakenFromMobile;
-  List<String> nameOfDisease = ['Healthy', 'Bacterial leaf blight', 'Brown Spot', 'Leaf smut', 'Brown Spot'];
+  List<String> nameOfDisease = ['Bacterial leaf blight', 'Brown Spot', 'Leaf smut', 'Brown Spot'];
   int len = 0;
   String filePath = '';
 

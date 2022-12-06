@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:spl3_project2022/module/home_page.dart';
 
 class Detection extends StatefulWidget {
   //const Detection({Key? key}) : super(key: key);
@@ -46,19 +47,34 @@ class _DetectionState extends State<Detection> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children:[
-                filePath.isEmpty ? SizedBox(height: 0, width: 0,) :SizedBox(
+                SizedBox(height: 40,),
+                filePath.isEmpty ? SizedBox(height: 0, width: 0,) : Padding(padding: EdgeInsets.only(top: 10), child: SizedBox(
                   height: 300,
                   child: Card(
                     child: Image.file(infectedImageFile),
-                  ),
+                  ),)
                 ),
+                SizedBox(height: 20,),
                 Container(
-                  height: 200,
-                  width: 300,
+                  height: 100,
+                  width: 200,
                   color: Colors.white,
                   child: Card(
                     child: Center(child: Text(nameOfDisease)),
                   ),
+                ),
+                filePath.isEmpty? Container(): SizedBox(height: 40,),
+                filePath.isEmpty? Container():GestureDetector(
+                  child: Container(
+                    color: Color(0xff4dbac1),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('আগের পেজে ফিরে যান', style: TextStyle(color: Colors.white, fontSize: 20)),
+                    ),
+                  ),
+                  onTap: (){
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>MyHomePage()));
+                  },
                 )
               ],
             ),

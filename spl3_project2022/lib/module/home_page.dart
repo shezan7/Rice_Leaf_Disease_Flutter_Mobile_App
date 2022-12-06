@@ -50,33 +50,42 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                filePath.isEmpty ? SizedBox(height: 0,width: 0,) :SizedBox(
+                filePath.isEmpty ? SizedBox(height: 0, width: 0,) : Padding(padding: EdgeInsets.only(top: 100), child: SizedBox(
                   height: 300,
-                  child: Image.file(imageTakenFromMobile),
+                  child: Card(
+                    child: Image.file(imageTakenFromMobile),
+                  ),)
                 ),
-                Card(
+                SizedBox(height: 40,),
+                filePath.isEmpty ? Card(
                   child: Column(
                     children: [
-                      Icon(Icons.camera_alt_rounded, size: 100,),
+                      SizedBox(height: 20,),
+                      Icon(Icons.camera_alt_rounded, size: 150,),
+                      SizedBox(height: 20,),
                       GestureDetector(
                         onTap: () async {
                           var pickedFile = await _picker.pickImage(source: ImageSource.camera);
                         },
                           child: Container(
-                            height: 30,
-                            width: 100,
+                            height: 50,
+                            width: 200,
                             color: Color(0xff4dbac1),
-                              child: Center(child: Text('ছবি তুলুন'))
+                              child: Center(child: Text('ছবি তুলুন', style: TextStyle(color: Colors.white, fontSize: 20)))
                           )
                       )
                     ],
                   ),
-                ),
-                Card(
+                ): Container(),
+                SizedBox(height: 40,),
+                filePath.isEmpty ? Card(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(Icons.file_open, size: 100,),
+                      // Icon(Icons.file_open, size: 100,),
+                      SizedBox(height: 20,),
+                      Icon(Icons.file_open, size: 150,),
+                      SizedBox(height: 20,),
                       GestureDetector(
                           onTap: () async{
                             FilePickerResult? selectedFile =
@@ -87,30 +96,47 @@ class _MyHomePageState extends State<MyHomePage> {
                             setState(() {});
                           },
                           child: Container(
-                              height: 30,
-                              width: 100,
+                              height: 50,
+                              width: 200,
                               color: Color(0xff4dbac1),
-                              child: Center(child: Text('ছবি বের করুন'))
+                              // child: Center(child: Text('ছবি বের করুন'))
+                              child: Center(child: Text('ছবি বের করুন', style: TextStyle(color: Colors.white, fontSize: 20)))
                           )
                       )
                     ],
                   ),
-                ),
-                GestureDetector(
+                ) : Container(),
+                SizedBox(height: 20,),
+                filePath.isEmpty ? SizedBox(height: 0, width: 0,) : GestureDetector(
                   child: Container(
                     color: Color(0xff4dbac1),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text('রোগের তথ্য জানুন'),
+                      child: Text('রোগের তথ্য জানুন', style: TextStyle(color: Colors.white, fontSize: 20)),
                     ),
                   ),
                   onTap: (){
                     dynamic response;
                     response = sendData(filePath);
-                    Navigator.push(context, MaterialPageRoute(builder: (_)=>Detection(infectedImageFile: filePath, nameOfDisease: nameOfDisease[counter%len])));
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>Detection(infectedImageFile: filePath, nameOfDisease: nameOfDisease[counter%len])));
                     counter++;
                   },
-                )
+                ),
+                // filePath.isEmpty? Container(): SizedBox(height: 20,),
+                // filePath.isEmpty? Container():GestureDetector(
+                //   child: Container(
+                //     color: Color(0xff4dbac1),
+                //     child: Padding(
+                //       padding: const EdgeInsets.all(8.0),
+                //       child: Text('Refresh', style: TextStyle(color: Colors.white, fontSize: 20)),
+                //     ),
+                //   ),
+                //   onTap: (){
+                //     setState(() {
+                //       filePath = '';
+                //     });
+                //   },
+                // )
               ],
             ),
           ),
